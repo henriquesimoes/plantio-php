@@ -3,7 +3,7 @@
         function __construct(){
             $ds='mysql:host=localhost;dbname=plantio';
 			$user = "root";
-			$pass = "vertrigo";
+			$pass = "";
 			$db = new PDO($ds, $user, $pass);
 
             $this->db = $db;

@@ -11,7 +11,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#"><img src="" alt="">PLANTIO</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -19,27 +19,29 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Plantio <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Produtos <span class="sr-only">(current)</span></a>
                 </li>
             </div>
         </nav>
 
         <?php
-            echo"
-                <div class='card' style='width: 18rem;'>
-                    <img class='card-img-top' src='lib/imagens/".$produto->getImagem().".jpg' alt='Card image cap'>
-                    <div class='card-body'>
-                        <h5 class='card-title'>".$produto->getNome()."</h5>
-                        <h6 class='card-subtitle mb-2 text-muted'>".$produto->getCategoria()."</h6>
-                        <p class='card-text'>Preço : <span>".$produto->getPreco()."</span></p>
-                        <p class='card-text'>Estoque : <span>".$produto->getEstoque()."</span></p>
+            foreach($this->produtos as $produto){
+                echo"
+                    <div class='card' style='width: 18rem;'>
+                        <img class='card-img-top' src='lib/imagens/".$produto->getImagem().".jpg' alt='Card image cap'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>".$produto->getNome()."</h5>
+                            <h6 class='card-subtitle mb-2 text-muted'>".$produto->getCategoria()."</h6>
+                            <p class='card-text'>Preço : <span>".$produto->getPreco()."</span></p>
+                            <p class='card-text'>Estoque : <span>".$produto->getEstoque()."</span></p>
 
-                        <a href='#' class='btn btn-primary'>Go somewhere</a>
-                        <a href='#' class='card-link'>Card link</a>
-                        <a href='#' class='card-link'>Another link</a>
+                            <a href='#' class='btn btn-primary'>Go somewhere</a>
+                            <a href='#' class='card-link'>Card link</a>
+                            <a href='#' class='card-link'>Another link</a>
+                        </div>
                     </div>
-                </div>
-            "
+                ";
+            }      
         ?>
 
 
