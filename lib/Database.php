@@ -38,7 +38,7 @@
 				while($row = $stmt->fetch()){
 					$produtos[] = $this->rowToProduto($row);
 				}
-				return $produtos;
+				return empty($produtos)? [] : $produtos;
 			}
 			else {
 				return false;
