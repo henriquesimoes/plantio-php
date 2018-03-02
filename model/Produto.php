@@ -47,5 +47,12 @@
 		public function setImagem($imagem){
 			$this->imagem = $imagem;
 		}
-	
+		
+		public function getCodigoProd(){
+            return $this->codigoProd;
+        }
+		
+		public function setCodigoProd($codigoProd){
+			$this->codigoProd = $codigoProd;
+		}
     }
