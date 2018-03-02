@@ -11,7 +11,7 @@
         <title>Plantio</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ustify-content-between" style="margin-bottom:50px;">
             <a class="navbar-brand" href="#"><img src="" alt="">PLANTIO</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,6 +22,10 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Produtos <span class="sr-only">(current)</span></a>
                 </li>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="pesquisar">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+                </form>
             </div>
         </nav>
         <div class="container" id="prodlist">
@@ -36,8 +40,8 @@
                                 <h6 class='card-subtitle mb-2 text-muted'>".$produto->getCategoria()."</h6>
                                 <p class='card-text'>Preço : <span>".$produto->getPreco()."</span></p>
                                 <p class='card-text'>Estoque : <span>".$produto->getEstoque()."</span></p>
-                                <a href='#' class='card-link'>Editar</a>
-                                <a href='#' class='card-link'>Excluir</a>
+                                <a href='#' class='card-link' onclick='add2()'>Editar</a>
+                                <a href='#' class='card-link' onclick='add3()'>Excluir</a>
                             </div>
                         </div>
                     ";
@@ -53,6 +57,7 @@
         </div>
             
         <form class="col-8 offset-2" id='cadastrar' style="display:none;  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);padding:75px;" action="save.php" method="POST">
+                <input type="text" name="id" style="display:none">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                     <label for="inputNome">Nome do Produto</label>
@@ -86,7 +91,19 @@
                     </label>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Cadastrar</button>      <button type="button"  class="btn btn-primary" onclick="add1()">voltar</button>
+                <button type="submit" class="btn btn-primary" id="botaozinho">Cadastrar</button>      <button type="button"  class="btn btn-primary" onclick="add1()">voltar</button>
+                </form>
+                <form class="col-8 offset-2" id='excluir' style="display:none;  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);padding:75px;" action="save.php" method="POST">
+                <input type="text" name="id" style="display:none">
+                <div class="form-group">
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Confirmar
+                    </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" id="botaozinho2">Cadastrar</button>      <button type="button"  class="btn btn-primary" onclick="add1()">voltar</button>
                 </form>
 
         <script src="js/bootstrap.min.js"></script>
@@ -100,12 +117,38 @@
                     document.getElementById('cadastrar').style.display = "none";
                 }
                 else{
+                    document.getElementById('prodlist').style.filter = "blur(5px)";
+                document.getElementById('cadastrar').style.display="block";
+                document.getElementById('cadastrar').style.backgroundColor="#fff";
+                }
+            }
+            function add2(){
+
+                if(document.getElementById('cadastrar').style.display == "block"){
+                    document.getElementById('prodlist').style.filter = "blur(0px)";
+                    document.getElementById('cadastrar').style.display = "none";
+                    document.getElementById('botaozinho').innerHTML = "Editar";
+                    
+                }
+                else{
+                    document.getElementById('prodlist').style.filter = "blur(5px)";
+                document.getElementById('cadastrar').style.display="block";
+                document.getElementById('cadastrar').style.backgroundColor="#fff";
+                }
+            }
+            function add3(){
+
+                if(document.getElementById('cadastrar').style.display == "block"){
+                    document.getElementById('prodlist').style.filter = "blur(0px)";
+                    document.getElementById('cadastrar').style.display = "none";
+                    
+                }
+                else{
                     document.getElementById('prodlist').style.filter = "blur(20px)";
                 document.getElementById('cadastrar').style.display="block";
                 document.getElementById('cadastrar').style.backgroundColor="#fff";
                 }
             }
-
         </script>
     </body>
 </html>
