@@ -34,14 +34,14 @@
                 foreach($this->produtos as $produto){
                     echo"
                         <div class='card col-3'>
-                            <img class='card-img-top' src='lib/imagens/".$produto->getImagem().".jpg' alt='Card image cap'>
+                            <img class='card-img-top' src='img/".$produto->getImagem().".jpg' alt='Card image cap'>
                             <div class='card-body'>
                                 <h5 class='card-title'>".$produto->getNome()."</h5>
                                 <h6 class='card-subtitle mb-2 text-muted'>".$produto->getCategoria()."</h6>
                                 <p class='card-text'>Preço : <span>".$produto->getPreco()."</span></p>
                                 <p class='card-text'>Estoque : <span>".$produto->getEstoque()."</span></p>
                                 <a href='#' class='card-link' onclick='add2()'>Editar</a>
-                                <a href='#' class='card-link' onclick='add3()'>Excluir</a>
+                                <a href='delete.php?cod=".$produto->getCodigoProd()."' class='card-link'>Excluir</a>
                             </div>
                         </div>
                     ";
@@ -55,7 +55,6 @@
                 </div>
             </div>
         </div>
-            
         <form class="col-8 offset-2" id='cadastrar' style="display:none;  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);padding:75px;" action="save.php" method="POST">
                 <input type="text" name="id" style="display:none">
                 <div class="form-row">
