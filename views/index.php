@@ -36,11 +36,12 @@
                         <div class='card col-3'>
                             <img class='card-img-top' src='img/".$produto->getImagem().".jpg' alt='Card image cap'>
                             <div class='card-body'>
+                                <p class='card-cod' style='display: none'>".$produto->getCodigoProd()."</p>
                                 <h5 class='card-title'>".$produto->getNome()."</h5>
                                 <h6 class='card-subtitle mb-2 text-muted'>".$produto->getCategoria()."</h6>
-                                <p class='card-text'>Preço : <span>".$produto->getPreco()."</span></p>
-                                <p class='card-text'>Estoque : <span>".$produto->getEstoque()."</span></p>
-                                <a href='#' class='card-link' onclick='add2()'>Editar</a>
+                                <p class='card-text'>Preço : <span class='card-preco'>".$produto->getPreco()."</span></p>
+                                <p class='card-text'>Estoque : <span class='card-estoque'>".$produto->getEstoque()."</span></p>
+                                <a href='#' class='card-link' onclick='add2(this)'>Editar</a>
                                 <a href='delete.php?cod=".$produto->getCodigoProd()."' class='card-link'>Excluir</a>
                             </div>
                         </div>
@@ -56,7 +57,7 @@
             </div>
         </div>
         <form class="col-8 offset-2" id='cadastrar' style="display:none;  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);padding:75px;" action="save.php" method="POST">
-                <input type="text" name="id" style="display:none">
+                <input id="inputCod" type="text" name="cod" style="display:none">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                     <label for="inputNome">Nome do Produto</label>
@@ -117,25 +118,37 @@
                 }
                 else{
                     document.getElementById('prodlist').style.filter = "blur(5px)";
-                document.getElementById('cadastrar').style.display="block";
-                document.getElementById('cadastrar').style.backgroundColor="#fff";
+                    document.getElementById('cadastrar').style.display="block";
+                    document.getElementById('cadastrar').style.backgroundColor="#fff";
+                    $('#inputCod').val('');
+                    $('#inputNome').val('');
+                    $('#inlineFormCustomSelect').val('Escolha');
+                    $('#inputEstoque').val('');
+                    $('#inputPreco').val('');
+                    $('#cadastrar').attr('action', 'save.php');
                 }
             }
-            function add2(){
-
+            function add2(cardButton){
+                console.log(cardButton);
                 if(document.getElementById('cadastrar').style.display == "block"){
                     document.getElementById('prodlist').style.filter = "blur(0px)";
                     document.getElementById('cadastrar').style.display = "none";
-                    document.getElementById('botaozinho').innerHTML = "Editar";
-                    
                 }
                 else{
                     document.getElementById('prodlist').style.filter = "blur(5px)";
-                document.getElementById('cadastrar').style.display="block";
-                document.getElementById('cadastrar').style.backgroundColor="#fff";
+                    document.getElementById('cadastrar').style.display="block";
+                    document.getElementById('cadastrar').style.backgroundColor="#fff";
+                    document.getElementById('botaozinho').innerHTML = "Editar";
+                    $card = $(cardButton).parents('.card').first();
+                    $('#inputCod').val($card.find('.card-cod').html());
+                    $('#inputNome').val($card.find('.card-title').html());
+                    $('#inlineFormCustomSelect').val($card.find('.card-subtitle').html());
+                    $('#inputEstoque').val($card.find('.card-estoque').html());
+                    $('#inputPreco').val($card.find('.card-preco').html());
+                    $('#cadastrar').attr('action', 'update.php');
                 }
             }
-            function add3(){
+            /*function add3(){
 
                 if(document.getElementById('cadastrar').style.display == "block"){
                     document.getElementById('prodlist').style.filter = "blur(0px)";
@@ -144,10 +157,10 @@
                 }
                 else{
                     document.getElementById('prodlist').style.filter = "blur(20px)";
-                document.getElementById('cadastrar').style.display="block";
-                document.getElementById('cadastrar').style.backgroundColor="#fff";
+                    document.getElementById('cadastrar').style.display="block";
+                    document.getElementById('cadastrar').style.backgroundColor="#fff";
                 }
-            }
+            }*/
         </script>
     </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
     require_once 'inc.php';
 
-    $cod = isset($_POST['codigoprod'])? $_POST['codigoprod'] : invalidParam();
+    $cod = isset($_POST['cod'])? $_POST['cod'] : invalidParam();
     $nome = isset($_POST['nome'])? $_POST['nome'] : invalidParam();
     $preco = isset($_POST['preco'])? $_POST['preco'] : invalidParam();
     $categoria = isset($_POST['categoria'])? $_POST['categoria'] : invalidParam();
