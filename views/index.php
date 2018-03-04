@@ -22,8 +22,8 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Produtos <span class="sr-only">(current)</span></a>
                 </li>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="pesquisar">
+                <form class="form-inline my-2 my-lg-0" method='GET' action='index.php'>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="q">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
                 </form>
             </div>

@@ -31,9 +31,11 @@
 			}
 		}
 
-        public function retrieve(){
-        	$query = "SELECT * FROM produto";
+        public function retrieve($search){
+			$query = "SELECT * FROM produto WHERE nome LIKE ?";
 			$stmt = $this->db->prepare($query);
+			$search = '%'.$search.'%';
+			$stmt->bindParam(1, $search);
 			if($stmt->execute()){
 				while($row = $stmt->fetch()){
 					$produtos[] = $this->rowToProduto($row);
